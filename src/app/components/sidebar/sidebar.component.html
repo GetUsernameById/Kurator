@@ -1,0 +1,103 @@
+<mat-sidenav-container class="sidebar-container" >
+  <mat-sidenav class="sidebar" mode="side" [(opened)]="opened" #sidenav>
+    <div class="logo">
+      <a class="simple-text logo-text" href="/">
+        Проект Куратор
+      </a>
+    </div>
+    <div class="sidebar-nav">
+      <ul class="nav">
+        <li>
+          <a href="/shops"  class="nav-link">
+            <i class="material-icons">store</i>
+            <span class="nav-title">
+              Магазины
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="/check-list"  class="nav-link">
+            <i class="material-icons">contact_support</i>
+            <span class="nav-title">
+              Чек-лист
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#network"  class="nav-link" data-toggle="collapse">
+            <i class="material-icons">content_paste</i>
+            <span class="nav-title">
+               Сеть
+               <b class="caret"></b>
+            </span>
+          </a>
+          <div class="collapse" id="network">
+            <ul class="nav nav-child">
+              <li routerlinkactive="active" class="nav-item">
+                <a class="nav-link" href="#/forms/regular">
+                  <i class="material-icons">read_more</i>
+                  <span class="sidebar-normal">Перемещения КД</span>
+                </a>
+              </li>
+              <li routerlinkactive="active" class="nav-item">
+                <a class="nav-link" href="#/forms/extended">
+                  <i class="material-icons">read_more</i>
+                  <span class="sidebar-normal">План работ КД</span>
+                </a>
+              </li>
+              <li routerlinkactive="active" class="nav-item">
+                <a class="nav-link" href="#/forms/validation">
+                  <i class="material-icons">read_more</i>
+                  <span class="sidebar-normal">Аудиты магазины</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#control"  class="nav-link" data-toggle="collapse">
+            <i class="material-icons">content_paste</i>
+            <span class="nav-title">
+              Управление
+              <b class="caret"></b>
+            </span>
+          </a>
+          <div class="collapse" id="control">
+            <ul class="nav nav-child">
+              <li routerlinkactive="active" class="nav-item">
+                <a class="nav-link" href="#/forms/regular">
+                  <i class="material-icons">read_more</i>
+                  <span class="nav-title">Типы вопросов</span>
+                </a>
+              </li>
+              <li routerlinkactive="active" class="nav-item">
+                <a class="nav-link" href="#/forms/extended">
+                  <i class="material-icons">read_more</i>
+                  <span class="nav-title">Скачать приложение</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="/audits"  class="nav-link">
+            <i class="material-icons">insert_chart</i>
+            <span class="nav-title">
+              Отчёты
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-navbar-top [sidenav]="sidenav"></app-navbar-top>
+    <div class="main-content">
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-title">
+    <h4>Simple Table</h4>
+  </div>
+  <div class="card-body">
+    <table class="table">
+    <thead class="text-primary">
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Salary</th>
+        <th></th>
+        <th></th>
+        <!---->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{item.name}}</td>
+        <td>{{item.country}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.salary}}</td>
+        <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openFormDialog()">create</i></td>
+        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<nav class="navbar-top">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <div class="burger">
+        <button mat-raised-button="" class="btn btn-just-icon btn-white btn-fab btn-round" (click)="sidenav.toggle()" (click)="slideToggleFunc()">
+          <i class="material-icons visible-on-sidebar-regular" [hidden]="!slideToggle">more_vert</i>
+          <i class="material-icons visible-on-sidebar-mini" [hidden]="slideToggle">view_list</i>
+        </button>
+      </div>
+      <div class="nav-title">
+        Рабочая область
+      </div>
+    </div>
+    <div class="navbar-wrapper">
+      <div class="user-icon">
+        <i class="material-icons text_align-center visible-on-sidebar-regular">person_outline</i>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+.table{
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+  .text-primary{
+    color: #2196f3!important;
+  }
+  tr:first-child td {
+    border-top: none;
+  }
+  tr{
+    th{
+      text-align: inherit;
+      padding: 12px 8px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      font-size: 1.0625rem;
+      font-weight: 300;
+    }
+    td{
+      &.icon-td{
+        width: 28px;
+        padding: 12px 0px;
+        i{
+          &.edit-icon {
+            color:#007e39;
+          }
+          &.delete-icon {
+            color:#f44336;
+          }
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+      padding: 12px 8px;
+      vertical-align: middle;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+  }
+}
