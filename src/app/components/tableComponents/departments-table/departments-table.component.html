@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-title">
+    <h4>Организации</h4>
+    <div class="card-tite-event" (click)="openAddFormDialog()">
+      <i class="material-icons  edit-icon" title="Добавить организацию">business</i>
+      Добавить организацию
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+    <thead class="text-primary">
+      <tr>
+        <th>Название</th>
+        <th></th>
+        <th></th>
+        <!---->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let department of departments">
+        <td>{{department.name}}</td>
+        <td class="icon-td"><a [routerLink]="['/checklist/questions', department.id]"><i class="material-icons  question-icon" title="Вопросы">contact_support</i></a></td>
+        <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(department)">create</i></td>
+        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(department.id)">delete_forever</i></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

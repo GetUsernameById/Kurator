@@ -9,6 +9,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -82,9 +84,33 @@ i[hidden]{
   padding: 50px 20px 20px 20px;
   .card-title{
     padding-left: 8px;
+    display: flex;
+    justify-content: space-between;
+    .card-tite-event{
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-self: flex-start;
+      line-height: 24px;
+      &:hover{
+        color: #007e39;
+      }
+      i{
+        color: #007e39;
+        margin-right: 5px;
+      }
+    }
+
     h4{
       font-size: 24px;
     }
   }
 }
 
+
+.mat-form-field.select-field {
+  .mat-form-field-flex {
+    background-color: transparent;
+    padding: .75em .25em 0 0;
+  }
+}

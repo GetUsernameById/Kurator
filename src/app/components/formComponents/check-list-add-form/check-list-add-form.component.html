@@ -1,0 +1,16 @@
+<div class="form-dialog">
+  <h2>Добавить чек-лист</h2>
+  <div mat-dialog-content>
+    <form class="example-form" [formGroup]="checkListForm" novalidate>
+      <mat-form-field class="example-full-width">
+        <mat-label>Название</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="accent"  [disabled]="checkListForm.invalid" (click)="submit()">Отправить</button>
+    <button mat-button mat-dialog-close>Отмена</button>
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-title">
+    <h4>Магазины</h4>
+    <div class="card-tite-event" (click)="openAddFormDialog()">
+      <i class="material-icons  edit-icon" title="Добавить магазин">add_business</i>
+      Добивить магазин
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="text-primary">
+        <tr>
+          <th>Название </th>
+          <!-- <i class="material-icons  sort-icon" title="Редактировать" (click)="sortData('name')">sort</i> -->
+          <th>Широта</th>
+          <th>Долгота</th>
+          <th>Куст</th>
+          <th>КодCM</th>
+          <th>Код1C</th>
+          <th>EMAIL директора</th>
+          <th></th>
+          <th></th>
+          <!---->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td>{{item.name}}</td>
+          <td>{{item.latitude}}</td>
+          <td>{{item.longitude}}</td>
+          <td>{{item.groupId}}</td>
+          <td>{{item.codeSm}}</td>
+          <td>{{item.code1C}}</td>
+          <td>{{item.mail}}</td>
+          <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(item)">create</i></td>
+          <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

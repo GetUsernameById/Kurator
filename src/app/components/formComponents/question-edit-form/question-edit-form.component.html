@@ -1,0 +1,55 @@
+<div class="form-dialog">
+  <h2>Введите сканкод</h2>
+  <div mat-dialog-content>
+    <form class="example-form" [formGroup]="form" novalidate>
+      <mat-form-field class="example-full-width">
+        <mat-label>Вопрос</mat-label>
+        <input matInput formControlName="text">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Задача</mat-label>
+        <input matInput formControlName="action">
+      </mat-form-field>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Мин. баллов</mat-label>
+              <input matInput formControlName="minScore">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Макс. баллов</mat-label>
+              <input matInput formControlName="maxScore">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Проходное значение</mat-label>
+              <input matInput formControlName="passScore">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Приоритет</mat-label>
+              <input matInput formControlName="rankId">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="accent"  [disabled]="form.invalid" (click)="submit()">Отправить</button>
+    <button mat-button mat-dialog-close>Отмена</button>
+  </div>
+</div>
+

@@ -1,0 +1,82 @@
+<div class="form-dialog">
+  <h2>Добавить организацию</h2>
+  <div mat-dialog-content>
+    <form class="example-form" [formGroup]="form" novalidate>
+      <mat-form-field class="example-full-width">
+        <mat-label>Название</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Пользователь</mat-label>
+        <input matInput formControlName="userId">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Магазин</mat-label>
+        <input matInput formControlName="placeId">
+      </mat-form-field>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Начало по плану</mat-label>
+              <input matInput formControlName="startPlan">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Начало</mat-label>
+              <input matInput formControlName="startFact">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Завершение</mat-label>
+              <input matInput formControlName="endFact">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Широта начало</mat-label>
+              <input matInput formControlName="latitudeStart">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Широта конец</mat-label>
+              <input matInput formControlName="latitudeEnd">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Долгота начало</mat-label>
+              <input matInput formControlName="longitudeStart">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Долгота конец</mat-label>
+              <input matInput formControlName="longitudeEnd">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Закрыть</button>
+  </div>
+</div>
+

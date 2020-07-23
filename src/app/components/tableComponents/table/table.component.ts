@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormComponent } from '../../form/form.component';
+import { FormComponent } from '../../formComponents/form/form.component';
 
 
 
@@ -26,7 +26,6 @@ export class TableComponent implements OnInit {
   openFormDialog(): void{
     const dialogRef = this.dialog.open(FormComponent, {
       // width: '540px',
-      // data: {socketId: this.cashbox.socketId}
     });
   }
 

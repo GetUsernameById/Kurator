@@ -8,7 +8,15 @@
     <div class="sidebar-nav">
       <ul class="nav">
         <li>
-          <a href="/shops"  class="nav-link">
+          <a routerLink="/departments"  class="nav-link">
+            <i class="material-icons">business</i>
+            <span class="nav-title">
+              Организации
+            </span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/stores"  class="nav-link">
             <i class="material-icons">store</i>
             <span class="nav-title">
               Магазины
@@ -16,10 +24,18 @@
           </a>
         </li>
         <li>
-          <a href="/check-list"  class="nav-link">
+          <a routerLink="/check-list"  class="nav-link">
             <i class="material-icons">contact_support</i>
             <span class="nav-title">
               Чек-лист
+            </span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/event-types"  class="nav-link">
+            <i class="material-icons">event</i>
+            <span class="nav-title">
+              Мероприятия
             </span>
           </a>
         </li>
@@ -80,7 +96,7 @@
           </div>
         </li>
         <li>
-          <a href="/audits"  class="nav-link">
+          <a routerLink="/audits"  class="nav-link">
             <i class="material-icons">insert_chart</i>
             <span class="nav-title">
               Отчёты
@@ -93,8 +109,8 @@
   <mat-sidenav-content>
     <app-navbar-top [sidenav]="sidenav"></app-navbar-top>
     <div class="main-content">
-      <div class="container-fluid">
-        <router-outlet></router-outlet>
+      <div class="container-fluid" [@routeAnimation]="getState(routerOutlet)">
+        <router-outlet #routerOutlet="outlet"></router-outlet>
       </div>
     </div>
   </mat-sidenav-content>

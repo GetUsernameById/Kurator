@@ -1,0 +1,31 @@
+h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.form-field{
+  input{
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 8px;
+    border: 1px solid #e3e3e3;
+  }
+}
+.mat-form-field{
+  display: block;
+}
+table{
+  width: 100%;
+  td{padding-right: 8px;}
+}
+.mat-dialog-actions{
+  justify-content: flex-start;
+  margin-top: 15px;
+  margin-bottom: -10px;
+  .mat-flat-button.mat-accent{
+    background-color: #007e39;
+  }
+}
+button[disabled=true]{
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+

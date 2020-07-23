@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-title">
+    <h4>Чек-лист</h4>
+    <div class="card-tite-event" (click)="openAddFormDialog()">
+      <i class="material-icons  edit-icon" title="Добавить чек-лист">contact_support</i>
+      Добавить чек-лист
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+    <thead class="text-primary">
+      <tr>
+        <th>Категория</th>
+        <th></th>
+        <th></th>
+        <!---->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td [routerLink]="[item.id, 'questions']">{{item.name}}</td>
+        <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(item)">create</i></td>
+        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

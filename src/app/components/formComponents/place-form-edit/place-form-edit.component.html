@@ -1,0 +1,60 @@
+<div class="form-dialog">
+  <h2>Редактировать магазин</h2>
+  <div mat-dialog-content>
+    <form class="example-form" [formGroup]="storeForm" novalidate>
+      <mat-form-field class="example-full-width">
+        <mat-label>Название</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>EMAIL директора</mat-label>
+        <input matInput formControlName="mail">
+      </mat-form-field>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Широта</mat-label>
+              <input matInput formControlName="latitude">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Долгота</mat-label>
+              <input matInput formControlName="longitude">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Куст</mat-label>
+              <input matInput formControlName="groupId">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>КодСМ</mat-label>
+              <input matInput formControlName="codeSm">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Код1С</mat-label>
+              <input matInput formControlName="code1C">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="accent" [disabled]="storeForm.invalid" (click)="submit()">Отправить</button>
+    <button mat-button mat-dialog-close>Отмена</button>
+  </div>
+</div>
