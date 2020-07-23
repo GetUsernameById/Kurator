@@ -11,7 +11,7 @@ import { switchMap, startWith, catchError, map, filter } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-places-table',
+  selector: 'app-places-super-table',
   templateUrl: './places-super-table.component.html',
   styleUrls: ['./places-super-table.component.scss', '../table.component.scss'],
 })
