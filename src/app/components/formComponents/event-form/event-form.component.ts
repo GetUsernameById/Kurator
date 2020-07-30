@@ -25,7 +25,7 @@ export class EventFormComponent implements OnInit {
       name : new FormControl(data.name, Validators.required),
       userId : new FormControl(data.userName, Validators.required),
       placeId : new FormControl(data.placeName, Validators.required),
-      startPlan : new FormControl(data.startPlan, Validators.required),
+      startPlan : new FormControl(data.startPlan,   Validators.required),
       startFact : new FormControl(data.startFact, Validators.required),
       endFact : new FormControl(data.endFact, Validators.required),
       latitudeStart : new FormControl(data.latitudeStart, Validators.required),
