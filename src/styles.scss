@@ -114,3 +114,55 @@ i[hidden]{
     padding: .75em .25em 0 0;
   }
 }
+
+
+.tooltiptopicevent{
+  width: auto;
+  height: auto;
+  background: #feb811;
+  position: absolute;
+  z-index: 10001;
+  padding: 10px 10px 10px 10px;
+  line-height: 200%;
+  pointer-events: none;
+}
+
+.fc-daygrid-day {
+  height: 150px;
+}
+.fc-daygrid-event{
+  color: #fff;
+  &:hover{
+    .event-tooltip{
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  .event-tooltip{
+    width: auto;
+    height: auto;
+    background: #feb811;
+    position: absolute;
+    z-index: 10001;
+    padding: 10px 10px 10px 10px;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-120%);
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.2s;
+    &:after{
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      border: 10px solid transparent; border-top: 10px solid #feb811;
+    }
+  }
+}
+
+body .fc .fc-scroller-harness{
+  overflow: visible;
+}

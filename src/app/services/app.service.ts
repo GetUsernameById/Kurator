@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IPlaceItem, IDepartment, IEventType, IQuestion} from '../app.models';
+import { IPlaceItem, IDepartment, IEventType, IQuestion, IEvent} from '../app.models';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 
@@ -95,9 +96,51 @@ export class AppService {
   }
 
 
+  getEventsAll(){
+    const url = environment.api_url + 'events';
+    return this.http.get(url, this.httpOptions).pipe(
+      map((data: IEvent[]) => {
+        return data.map((event: IEvent) => {
+          return {
+            title: event.name,
+            start: event.startFact,
+            end: event.endFact,
+            description: event.name,
+            color: 'green',
+            editable: false,
+            allDay: true
+          };
+        });
+      }),
+    );
+  }
 
   getEvents(id) {
     const url = environment.api_url + 'events/' + id;
+    return this.http.get(url, this.httpOptions);
+  }
+
+  getEventsByUserId(id) {
+    const url = environment.api_url + 'events-by-user/' + id;
+    return this.http.get(url, this.httpOptions).pipe(
+      map((data: IEvent[]) => {
+        return data.map((event: IEvent) => {
+          return {
+            title: event.name,
+            start: event.startFact,
+            end: event.endFact,
+            description: event.name,
+            color: 'green',
+            editable: false,
+            allDay: true
+          };
+        });
+      }),
+    );
+  }
+
+  getUsers() {
+    const url = environment.api_url + 'users';
     return this.http.get(url, this.httpOptions);
   }
 

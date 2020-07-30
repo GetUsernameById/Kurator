@@ -3,7 +3,7 @@ import { PlaceFormEditComponent } from '../../formComponents/place-form-edit/pla
 import { MatDialog } from '@angular/material/dialog';
 import { AppService } from '../../../services/app.service';
 import { PlaceFormAddComponent } from '../../formComponents/place-form-add/place-form-add.component';
-import { IPlaceItem } from '../../../app.models';
+import { IPlaceItem, IPlaceItemResponse } from '../../../app.models';
 
 
 
@@ -20,8 +20,8 @@ export class PlacesTableComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.appService.getPlaces().subscribe((places: IPlaceItem[]) => {
-      this.data = places;
+    this.appService.getPlaces().subscribe((places: IPlaceItemResponse) => {
+      this.data = places.items;
     });
   }
 

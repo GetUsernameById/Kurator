@@ -19,8 +19,19 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
+/*Calenadar*/
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { CalendarComponent } from './components/calendar/calendar.component';
+// import { PopoverComponent } from './components/calendar/popup/popover/popover.component'; // a plugin
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+]);
 
 import { TableComponent } from './components/tableComponents/table/table.component';
 import { HomeComponent } from './components/home/home.component';
@@ -44,8 +55,7 @@ import { CheckListEditFormComponent } from './components/formComponents/check-li
 import { QuestionEditFormComponent } from './components/formComponents/question-edit-form/question-edit-form.component';
 import { QuestionAddFormComponent } from './components/formComponents/question-add-form/question-add-form.component';
 import { PlacesSuperTableComponent } from './components/tableComponents/places-super-table/places-super-table.component';
-
-
+import { AnswersTableComponent } from './components/tableComponents/answers-table/answers-table.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +83,9 @@ import { PlacesSuperTableComponent } from './components/tableComponents/places-s
     EventTypesAddFormComponent,
     EventTypesEditFormComponent,
     EventFormComponent,
+    CalendarComponent,
+    AnswersTableComponent,
+    // PopoverComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +102,9 @@ import { PlacesSuperTableComponent } from './components/tableComponents/places-s
     MatSelectModule,
     MatSortModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FullCalendarModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

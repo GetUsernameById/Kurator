@@ -60,3 +60,8 @@ export interface IQuestionBlock {
   name: string;
   isActive: boolean;
 }
+
+export interface IUser {
+  id: number;
+  name: string;
+}
