@@ -7,32 +7,40 @@
     </div>
   </div>
   <div class="card-body">
-    <table class="table">
-    <thead class="text-primary">
-      <tr>
-        <th>Вопрос </th>
-        <th>Задача </th>
-        <th>Мин. баллов  </th>
-        <th>Макс. баллов  </th>
-        <th>Проходное значение</th>
-        <th>Приоритет</th>
-        <th></th>
-        <th></th>
-        <!---->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of data">
-        <td>{{item.text}}</td>
-        <td>{{item.action}}</td>
-        <td>{{item.minScore}}</td>
-        <td>{{item.maxScore}}</td>
-        <td>{{item.passScore}}</td>
-        <td>{{item.rankId}}</td>
-        <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(item)">create</i></td>
-        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
-      </tr>
-    </tbody>
+    <table class="table" matSort>
+      <thead class="text-primary">
+        <tr>
+          <th mat-sort-header="text">Вопрос </th>
+          <th>Задача </th>
+          <th>Мин. баллов  </th>
+          <th>Макс. баллов  </th>
+          <th>Проходное значение</th>
+          <th mat-sort-header="blockName">Катергория</th>
+          <th>Ранг</th>
+          <th></th>
+          <th></th>
+          <!---->
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let item of data">
+          <td>{{item.text}}</td>
+          <td>{{item.action}}</td>
+          <td>{{item.minScore}}</td>
+          <td>{{item.maxScore}}</td>
+          <td>{{item.passScore}}</td>
+          <td>{{item.blockName}}</td>
+          <td>{{item.rank.weight}}</td>
+          <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(item)">create</i></td>
+          <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
+        </tr>
+      </tbody>
     </table>
+    <mat-paginator [length]="totalCount"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event"
+               >
+    </mat-paginator>
   </div>
 </div>

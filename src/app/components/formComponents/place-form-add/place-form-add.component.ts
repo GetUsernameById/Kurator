@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { AppService } from '../../../services/app.service';
+import { PlaceGroupAddFormComponent } from '../place-group-add-form/place-group-add-form.component';
+import { IPlaceGroup } from 'src/app/app.models';
+import { Observable, merge, of } from 'rxjs';
 
 
 
@@ -12,13 +15,16 @@ import { AppService } from '../../../services/app.service';
 })
 export class PlaceFormAddComponent implements OnInit {
   public storeForm: FormGroup;
+  public placeGroups$: Observable<object>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PlaceFormAddComponent>,
+    public dialog: MatDialog,
     public appService: AppService,
-  ){
+  ){}
 
+  ngOnInit(): void {
     this.storeForm = new FormGroup({
       name : new FormControl('', Validators.required),
       mail : new FormControl('', [Validators.email]),
@@ -28,9 +34,8 @@ export class PlaceFormAddComponent implements OnInit {
       codeSm: new FormControl('',   [Validators.pattern('[0-9]*')]),
       code1C: new FormControl('', Validators.maxLength(5)),
     });
-  }
 
-  ngOnInit(): void {
+    this.placeGroups$ = this.appService.getPlaceGroups();
   }
 
 
@@ -38,6 +43,16 @@ export class PlaceFormAddComponent implements OnInit {
 
     this.appService.addPlace(this.storeForm.value).subscribe(result => {
       this.dialogRef.close(result);
+    });
+  }
+
+  openAddPlaceGroupFormDialog(): void{
+    const dialogRef = this.dialog.open(PlaceGroupAddFormComponent, {
+    });
+    dialogRef.afterClosed().subscribe((result: IPlaceGroup) => {
+      if (result){
+         this.placeGroups$ = merge(this.placeGroups$, of(result));
+      }
     });
   }
 }

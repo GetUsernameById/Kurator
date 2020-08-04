@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { AppService } from '../../../services/app.service';
+import { PlaceGroupAddFormComponent } from '../place-group-add-form/place-group-add-form.component';
+import { IPlaceGroup } from 'src/app/app.models';
+import { merge, of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-store-form',
@@ -10,13 +13,16 @@ import { AppService } from '../../../services/app.service';
 })
 export class PlaceFormEditComponent implements OnInit {
   public storeForm: FormGroup;
+  public placeGroups$: Observable<object>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PlaceFormEditComponent>,
+    public dialog: MatDialog,
     public appService: AppService,
-  ){
+  ){}
 
+  ngOnInit(): void {
     this.storeForm = new FormGroup({
       name : new FormControl(this.data.name, Validators.required),
       mail : new FormControl(this.data.mail, [Validators.email]),
@@ -26,9 +32,7 @@ export class PlaceFormEditComponent implements OnInit {
       codeSm: new FormControl(this.data.codeSm,   [Validators.pattern('[0-9]*')]),
       code1C: new FormControl(this.data.code1C,  Validators.maxLength(5)),
     });
-  }
-
-  ngOnInit(): void {
+    this.placeGroups$ = this.appService.getPlaceGroups();
   }
 
 
@@ -36,6 +40,15 @@ export class PlaceFormEditComponent implements OnInit {
     this.appService.editPlace({...this.data, ...this.storeForm.value}).subscribe(result => {
       this.dialogRef.close(result);
     });
+  }
 
+  openAddPlaceGroupFormDialog(): void{
+    const dialogRef = this.dialog.open(PlaceGroupAddFormComponent, {
+    });
+    dialogRef.afterClosed().subscribe((result: IPlaceGroup) => {
+      if (result){
+         this.placeGroups$ = merge(this.placeGroups$, of(result));
+      }
+    });
   }
 }

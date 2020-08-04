@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionAddFormComponent } from '../../formComponents/question-add-form/question-add-form.component';
 import { QuestionEditFormComponent } from '../../formComponents/question-edit-form/question-edit-form.component';
-import { IQuestion } from 'src/app/app.models';
+import { IQuestionPool } from 'src/app/app.models';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class AnswersTableComponent implements OnInit {
   id: string;
-  public data: IQuestion[];
+  public data: IQuestionPool[];
   constructor(
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
@@ -26,7 +26,7 @@ export class AnswersTableComponent implements OnInit {
     });
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.appService.getQuestions(this.id).subscribe((questions: IQuestion[]) => {
+      this.appService.getQuestions().subscribe((questions: IQuestionPool[]) => {
         this.data = questions;
       });
     });

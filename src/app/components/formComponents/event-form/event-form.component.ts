@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AppService } from 'src/app/services/app.service';
 import { IDepartment, IEvent } from 'src/app/app.models';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-check-list-form',
@@ -25,9 +26,9 @@ export class EventFormComponent implements OnInit {
       name : new FormControl(data.name, Validators.required),
       userId : new FormControl(data.userName, Validators.required),
       placeId : new FormControl(data.placeName, Validators.required),
-      startPlan : new FormControl(data.startPlan,   Validators.required),
-      startFact : new FormControl(data.startFact, Validators.required),
-      endFact : new FormControl(data.endFact, Validators.required),
+      startPlan : new FormControl(formatDate(data.startPlan, 'dd/MM/yy  HH:mm', 'en'),   Validators.required),
+      startFact : new FormControl(formatDate(data.startFact, 'dd/MM/yy  HH:mm', 'en'), Validators.required),
+      endFact : new FormControl(formatDate(data.endFact, 'dd/MM/yy  HH:mm', 'en'), Validators.required),
       latitudeStart : new FormControl(data.latitudeStart, Validators.required),
       latitudeEnd : new FormControl(data.latitudeEnd, Validators.required),
       longitudeStart : new FormControl(data.longitudeStart, Validators.required),

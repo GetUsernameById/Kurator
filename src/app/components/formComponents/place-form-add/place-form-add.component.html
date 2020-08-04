@@ -7,6 +7,16 @@
         <input matInput formControlName="name">
       </mat-form-field>
 
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Куст</mat-label>
+        <mat-select formControlName="groupId">
+          <mat-option *ngFor="let placeGroup of placeGroups$ | async" [value]="placeGroup.id">{{placeGroup.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="add-new-question new-select-sign">
+        <span title="Добавить" (click)="openAddPlaceGroupFormDialog()">Добавить</span>
+      </div>
+
       <mat-form-field class="example-full-width">
         <mat-label>EMAIL директора</mat-label>
         <input matInput formControlName="mail">
@@ -31,12 +41,6 @@
 
       <table class="example-full-width" cellspacing="0">
         <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Куст</mat-label>
-              <input matInput formControlName="groupId">
-            </mat-form-field>
-          </td>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>Код</mat-label>

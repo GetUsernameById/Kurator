@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-title">
-    <h4>Мероприятия</h4>
+    <h4>Чек лист</h4>
     <div class="card-tite-event" (click)="openAddFormDialog()">
       <i class="material-icons  edit-icon" title="Добивить блок действий">date_range</i>
       Добивить блок
@@ -9,23 +9,21 @@
   </div>
   <div class="card-body">
     <table class="table">
-    <thead class="text-primary">
-      <tr>
-        <th>Название</th>
-        <th>Организация</th>
-        <th></th>
-        <th></th>
-        <!---->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let eventType of eventTypes">
-        <td [routerLink]="[eventType.id, 'events']">{{eventType.name}}</td>
-        <td [routerLink]="[eventType.id, 'events']">{{eventType.departmentName}}</td>
-        <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(eventType)">create</i></td>
-        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(eventType.id)">delete_forever</i></td>
-      </tr>
-    </tbody>
+      <thead class="text-primary">
+        <tr>
+          <th>Название</th>
+          <th></th>
+          <th></th>
+          <!---->
+        </tr>
+      </thead>
+      <tbody class="hover-tbody">
+        <tr *ngFor="let eventType of eventTypes">
+          <td [routerLink]="['/event-types', eventType.id, 'questions']">{{eventType.name}}</td>
+          <td class="icon-td"> <i class="material-icons  edit-icon" title="Редактировать" (click)="openEditFormDialog(eventType)">create</i></td>
+          <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(eventType.id)">delete_forever</i></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IPlaceItem, IDepartment, IEventType, IQuestion, IEvent} from '../app.models';
+import { IPlaceItem, IDepartment, IEventType, IQuestionPool, IEvent, IQuestionStack, IRank, IPlaceGroup, IAnswer} from '../app.models';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -75,8 +75,15 @@ export class AppService {
 
 
 
-  getEventTypes() {
-    const url = environment.api_url + 'event-types';
+  getEventTypes(id = null) {
+    let url: string;
+    if (id !== null && id !== undefined){
+      url = environment.api_url + `event-types/${id}`;
+    }else{
+      url = environment.api_url + 'event-types';
+    }
+    console.log(url);
+
     return this.http.get(url, this.httpOptions);
   }
 
@@ -96,7 +103,7 @@ export class AppService {
   }
 
 
-  getEventsAll(){
+  getCalendarEventsAll(){
     const url = environment.api_url + 'events';
     return this.http.get(url, this.httpOptions).pipe(
       map((data: IEvent[]) => {
@@ -113,6 +120,11 @@ export class AppService {
         });
       }),
     );
+  }
+
+  getTableEventsAll(){
+    const url = environment.api_url + 'events';
+    return this.http.get(url, this.httpOptions);
   }
 
   getEvents(id) {
@@ -159,14 +171,20 @@ export class AppService {
     return this.http.post(url, {id}, {withCredentials: false});
   }*/
 
+  getQuestions(page: number = 0, offset: number = 0, sort: string = null, order: string = 'asc') {
+    const url = environment.api_url + 'questions';
+    const sortOrder = sort && order ? `${sort}_${order}` : null ;
+    const requestUrl = `${url}?&page=${page}&offset=${offset}&sortOrder=${sortOrder}`;
+    return this.http.get(requestUrl, this.httpOptions);
+  }
 
-  getQuestions(id) {
-    const url = environment.api_url + 'questions/' + id;
+  getQuestionSets(id) {
+    const url = environment.api_url + `question-sets/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
-  addQuestion(question: IQuestion) {
-    question.blockId = +question.blockId;
+  addQuestion(question: IQuestionPool) {
+    // questionStack.questionPool.blockId = +questionStack.questionPool.blockId;
     question.minScore = +question.minScore;
     question.maxScore = +question.maxScore;
     question.passScore = +question.passScore;
@@ -175,7 +193,7 @@ export class AppService {
     return this.http.post(url, question, {withCredentials: false});
   }
 
-  editQuestion(question: IQuestion) {
+  editQuestion(question: IQuestionPool) {
     question.blockId = +question.blockId;
     question.minScore = +question.minScore;
     question.maxScore = +question.maxScore;
@@ -187,6 +205,11 @@ export class AppService {
 
   deleteQuestion(id: number) {
     const url = environment.api_url + 'questions/delete';
+    return this.http.post(url, {id}, {withCredentials: false});
+  }
+
+  deleteQuestionSet(id: number) {
+    const url = environment.api_url + 'questions/delete-set';
     return this.http.post(url, {id}, {withCredentials: false});
   }
 
@@ -209,6 +232,53 @@ export class AppService {
   deleteQuestionBlock(id: number) {
     const url = environment.api_url + 'questions-blocks/delete';
     return this.http.post(url, {id}, {withCredentials: false});
+  }
+
+
+
+  getRanks() {
+    const url = environment.api_url + 'ranks';
+    return this.http.get(url, this.httpOptions);
+  }
+
+  addRank(rank: IRank) {
+    rank.weight = +rank.weight;
+    const url = environment.api_url + 'ranks/add';
+    return this.http.post(url, rank, {withCredentials: false});
+  }
+
+
+  getPlaceGroups() {
+    const url = environment.api_url + 'places-groups';
+    return this.http.get(url, this.httpOptions);
+  }
+
+  addPlaceGroup(placeGroup: IPlaceGroup) {
+    placeGroup.departmentId = +placeGroup.departmentId;
+    const url = environment.api_url + 'places-groups/add';
+    return this.http.post(url, placeGroup, {withCredentials: false});
+  }
+
+
+  getAnswerByQuestionSetId(id: number){
+    const url = environment.api_url + `answers/question-id/${id}`;
+    return this.http.get(url, this.httpOptions);
+  }
+
+  editAnswerByQustion(answer: IAnswer) {
+    answer.eventId = +answer.eventId;
+    answer.setId = +answer.setId;
+    answer.score = +answer.score;
+    const url = environment.api_url + 'answers/edit-by-question/';
+    return this.http.post(url, answer, {withCredentials: false});
+  }
+
+  editAnswerByEvent(answer: IAnswer) {
+    answer.eventId = +answer.eventId;
+    answer.setId = +answer.setId;
+    answer.score = +answer.score;
+    const url = environment.api_url + 'answers/edit-by-event/';
+    return this.http.post(url, answer, {withCredentials: false});
   }
 
 }

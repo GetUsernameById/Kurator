@@ -6,7 +6,7 @@ import { AppService } from 'src/app/services/app.service';
 import { EventFormComponent } from '../../formComponents/event-form/event-form.component';
 
 @Component({
-  selector: 'app-questions-table',
+  selector: 'app-events-table',
   templateUrl: './events-table.component.html',
   styleUrls: ['./events-table.component.scss', '../table.component.scss']
 })
@@ -23,7 +23,8 @@ export class EventsTableComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.appService.getEvents(this.id).subscribe((events: IEvent[]) => {
+
+      this.appService.getTableEventsAll().subscribe((events: IEvent[]) => {
         this.data = events;
       });
     });

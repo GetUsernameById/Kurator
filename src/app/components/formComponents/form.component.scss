@@ -29,3 +29,11 @@ button[disabled=true]{
   background-color: rgba(0, 0, 0, 0.12) !important;
 }
 
+.new-select-sign{
+  margin-top: -15px;
+  color: #007e39;
+  font-size: 12px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}

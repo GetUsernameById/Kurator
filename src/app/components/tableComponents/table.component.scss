@@ -6,6 +6,12 @@
   .text-primary{
     color: #2196f3!important;
   }
+  tbody.hover-tbody{
+    tr:hover{
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+  }
   tr:first-child td {
     border-top: none;
   }

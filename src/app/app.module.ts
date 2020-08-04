@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 import { TooltipModule } from 'ng2-tooltip-directive';
 
 /*Calenadar*/
@@ -56,6 +58,10 @@ import { QuestionEditFormComponent } from './components/formComponents/question-
 import { QuestionAddFormComponent } from './components/formComponents/question-add-form/question-add-form.component';
 import { PlacesSuperTableComponent } from './components/tableComponents/places-super-table/places-super-table.component';
 import { AnswersTableComponent } from './components/tableComponents/answers-table/answers-table.component';
+import { ETQuestionsTableComponent } from './components/tableComponents/et-questions-table/et-questions-table.component';
+import { RankAddFormComponent } from './components/formComponents/rank-add-form/rank-add-form.component';
+import { PlaceGroupAddFormComponent } from './components/formComponents/place-group-add-form/place-group-add-form.component';
+import { AnswerFormComponent } from './components/formComponents/answer-form/answer-form.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +75,7 @@ import { AnswersTableComponent } from './components/tableComponents/answers-tabl
     PlacesSuperTableComponent,
     ChecklistTableComponent,
     QuestionsTableComponent,
+    ETQuestionsTableComponent,
     DepartmentsTableComponent,
     EventTypesTableComponent,
     EventsTableComponent,
@@ -82,6 +89,9 @@ import { AnswersTableComponent } from './components/tableComponents/answers-tabl
     DepartmentEditFormComponent,
     EventTypesAddFormComponent,
     EventTypesEditFormComponent,
+    PlaceGroupAddFormComponent,
+    AnswerFormComponent,
+    RankAddFormComponent,
     EventFormComponent,
     CalendarComponent,
     AnswersTableComponent,
@@ -102,6 +112,8 @@ import { AnswersTableComponent } from './components/tableComponents/answers-tabl
     MatSelectModule,
     MatSortModule,
     MatTableModule,
+    MatChipsModule,
+    MatIconModule,
     MatPaginatorModule,
     FullCalendarModule,
     TooltipModule

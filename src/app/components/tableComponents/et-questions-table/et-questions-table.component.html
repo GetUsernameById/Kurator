@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-title">
+    <h4>Вопросы</h4>
+  </div>
+  <div class="card-body">
+    <table class="table">
+    <thead class="text-primary">
+      <tr>
+        <th>Вопрос </th>
+        <th>Задача </th>
+        <th>Мин. баллов  </th>
+        <th>Макс. баллов  </th>
+        <th>Проходное значение</th>
+        <th>Категория</th>
+        <th>Приоритет</th>
+        <th></th>
+        <th></th>
+        <!---->
+      </tr>
+    </thead>
+    <tbody class="hover-tbody">
+      <tr *ngFor="let item of data" >
+        <td (click)="openAnswerDialog(item.id)">{{item.text}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.action}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.minScore}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.maxScore}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.passScore}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.blockName}}</td>
+        <td (click)="openAnswerDialog(item.id)">{{item.rank.weight}}</td>
+        <td class="icon-td"> <i class="material-icons  delete-icon" title="Удалить" (click)="deleteRow(item.id)">delete_forever</i></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

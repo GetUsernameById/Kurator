@@ -12,6 +12,7 @@ import { EventsTableComponent } from './components/tableComponents/events-table/
 import { PlacesSuperTableComponent } from './components/tableComponents/places-super-table/places-super-table.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AnswersTableComponent } from './components/tableComponents/answers-table/answers-table.component';
+import { ETQuestionsTableComponent } from './components/tableComponents/et-questions-table/et-questions-table.component';
 
 
 const routes: Routes = [
@@ -22,9 +23,12 @@ const routes: Routes = [
   { path: 'check-list', component: ChecklistTableComponent, data : {state: 'check-list'}},
   { path: 'departments', component: DepartmentsTableComponent, data : {state: 'departments'}},
   { path: 'answers', component: AnswersTableComponent, data : {state: 'answers'}},
+  { path: 'departments/:id/event-types', component: EventTypesTableComponent, data : {state: 'event-types'}},
   { path: 'event-types', component: EventTypesTableComponent, data : {state: 'event-types'}},
   { path: 'event-types/:id/events', component: EventsTableComponent, data : {state: 'event-types-id'}},
-  { path: 'check-list/:id/questions', component: QuestionsTableComponent, data : {state: 'check-list-id'}},
+  { path: 'events', component: EventsTableComponent, data : {state: 'event-types-id'}},
+  { path: 'event-types/:id/questions', component: ETQuestionsTableComponent, data : {state: 'check-list-id'}},
+  { path: 'questions', component: QuestionsTableComponent, data : {state: 'check-list'}},
 ];
 
 @NgModule({

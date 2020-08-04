@@ -41,18 +41,41 @@ export interface IEvent {
   latitudeEnd: number;
   userName?: string;
   placeName?: string;
+  color?: string;
+  editable?: boolean;
+  allDay?: boolean;
 }
 
-export interface IQuestion {
+export interface IQuestionPool{
   id: number;
   blockId: number;
+  blockName?: string;
   text: string;
   action: string;
   minScore: number;
   maxScore: number;
   passScore: number;
   rankId: number;
+  rank: IRank;
   isActive: boolean;
+  questionSets?: IQuestionSet[];
+}
+
+export interface IQuestionResponse {
+  totalCount: number;
+  items: IQuestionPool[];
+}
+
+export interface IQuestionSet {
+  id?: number;
+  eventTypeId?: number;
+  questionPoolId?: number;
+  isActive?: boolean;
+}
+
+export interface IQuestionStack {
+  questionPool: IQuestionPool;
+  questionSets: IQuestionSet[];
 }
 
 export interface IQuestionBlock {
@@ -64,4 +87,24 @@ export interface IQuestionBlock {
 export interface IUser {
   id: number;
   name: string;
+}
+
+export interface IRank {
+  id: number;
+  name: string;
+  weight: number;
+}
+
+export interface IPlaceGroup {
+  id: number;
+  name: string;
+  departmentId: number;
+}
+
+export interface IAnswer {
+  id: number;
+  setId: number;
+  eventId: number;
+  score: number;
+  timestamp: number;
 }

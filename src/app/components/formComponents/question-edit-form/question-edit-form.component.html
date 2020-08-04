@@ -12,6 +12,24 @@
         <input matInput formControlName="action">
       </mat-form-field>
 
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Категория</mat-label>
+        <mat-select formControlName="blockId">
+          <mat-option *ngFor="let questionBlock of questionBlocks$ | async" [value]="questionBlock.id">{{questionBlock.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="add-new-question new-select-sign">
+        <span title="Добавить" (click)="openAddQuestionFormDialog()">Добавить</span>
+      </div>
+
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Типы событий</mat-label>
+        <mat-select multiple formControlName="eventTypeIds">
+          <mat-option *ngFor="let eventType of eventTypes$ | async" [value]="eventType.id">{{eventType.name}} <span class="departmen">({{eventType.departmentName}})</span></mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
@@ -26,25 +44,24 @@
               <input matInput formControlName="maxScore">
             </mat-form-field>
           </td>
-        </tr>
-      </table>
-
-      <table class="example-full-width" cellspacing="0">
-        <tr>
           <td>
             <mat-form-field class="example-full-width">
               <mat-label>Проходное значение</mat-label>
               <input matInput formControlName="passScore">
             </mat-form-field>
           </td>
-          <td>
-            <mat-form-field class="example-full-width">
-              <mat-label>Приоритет</mat-label>
-              <input matInput formControlName="rankId">
-            </mat-form-field>
-          </td>
         </tr>
       </table>
+
+      <mat-form-field class="select-field" appearance="fill">
+        <mat-label>Ранг</mat-label>
+        <mat-select formControlName="rankId">
+          <mat-option *ngFor="let rank of ranks$ | async" [value]="rank.id">{{rank.weight}} <span class="">({{rank.name}})</span></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="add-new-question new-select-sign">
+        <span title="Добавить" (click)="openAddRankFormDialog()">Добавить</span>
+      </div>
     </form>
   </div>
   <div mat-dialog-actions>

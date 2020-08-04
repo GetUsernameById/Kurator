@@ -32,7 +32,7 @@ export class CalendarComponent implements OnInit {
     this.appService.getUsers().subscribe((users: IUser[]) => {
       this.calendarUsers = users;
     });
-    this.appService.getEventsAll().subscribe(events => {
+    this.appService.getCalendarEventsAll().subscribe(events => {
       console.log(events);
       this.calendarOptions = {
         // headerToolbar: {

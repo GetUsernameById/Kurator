@@ -6,6 +6,7 @@ import { AppService } from '../../../services/app.service';
 import { DepartmentEditFormComponent } from '../../formComponents/department-edit-form/department-edit-form.component';
 import { EventTypesAddFormComponent } from '../../formComponents/event-types-add-form/event-types-add-form.component';
 import { EventTypesEditFormComponent } from '../../formComponents/event-types-edit-form/event-types-edit-form.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-checklist-table',
@@ -15,12 +16,16 @@ import { EventTypesEditFormComponent } from '../../formComponents/event-types-ed
 export class EventTypesTableComponent implements OnInit {
 
   public eventTypes: IEventType[];
+  public id: string;
 
-  constructor(public dialog: MatDialog, public appService: AppService) {}
+  constructor(public dialog: MatDialog, public appService: AppService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.appService.getEventTypes().subscribe((eventTypes: IEventType[]) => {
-      this.eventTypes = eventTypes;
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.appService.getEventTypes(this.id).subscribe((eventTypes: IEventType[]) => {
+        this.eventTypes = eventTypes;
+      });
     });
   }
 
