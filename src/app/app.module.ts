@@ -22,6 +22,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { NgxGalleryModule } from 'ngx-gallery-9';
 
 /*Calenadar*/
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
@@ -62,6 +63,7 @@ import { ETQuestionsTableComponent } from './components/tableComponents/et-quest
 import { RankAddFormComponent } from './components/formComponents/rank-add-form/rank-add-form.component';
 import { PlaceGroupAddFormComponent } from './components/formComponents/place-group-add-form/place-group-add-form.component';
 import { AnswerFormComponent } from './components/formComponents/answer-form/answer-form.component';
+import { DownloadComponent } from './components/download/download.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,7 @@ import { AnswerFormComponent } from './components/formComponents/answer-form/ans
     EventFormComponent,
     CalendarComponent,
     AnswersTableComponent,
+    DownloadComponent,
     // PopoverComponent,
   ],
   imports: [
@@ -116,7 +119,8 @@ import { AnswerFormComponent } from './components/formComponents/answer-form/ans
     MatIconModule,
     MatPaginatorModule,
     FullCalendarModule,
-    TooltipModule
+    TooltipModule,
+    NgxGalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

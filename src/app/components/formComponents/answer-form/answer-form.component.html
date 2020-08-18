@@ -1,5 +1,5 @@
 <div class="form-dialog">
-  <h2>Добавить куст</h2>
+  <h2>Ответ</h2>
   <div mat-dialog-content>
     <form class="example-form" [formGroup]="form" novalidate>
       <mat-form-field class="example-full-width">
@@ -7,6 +7,7 @@
         <input matInput formControlName="score">
       </mat-form-field>
     </form>
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
   </div>
   <div mat-dialog-actions>
     <button mat-flat-button color="accent"  [disabled]="form.invalid" (click)="submit()">Отправить</button>

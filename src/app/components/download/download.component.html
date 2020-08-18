@@ -1,0 +1,19 @@
+
+<form class="example-form" [formGroup]="form" novalidate>
+    <input mat-raised-button type="file" value="Open file" accept="image/jpeg,image/png" formControlName="download"
+      id="file"
+    (change)="handleFileInput($event.target.files)">
+</form>
+<div mat-dialog-actions style="margin-top: 20px;">
+  <button mat-flat-button color="accent"  [disabled]="form.invalid" (click)="submit()">Отправить</button>
+</div>
+
+<div class="images-wrapper" *ngFor="let image of images">
+  <img style='width:80px; height:60px;' src="{{image.url}}" />
+</div>
+
+<ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+
+
+
+

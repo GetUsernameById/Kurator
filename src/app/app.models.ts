@@ -46,6 +46,11 @@ export interface IEvent {
   allDay?: boolean;
 }
 
+export interface IEventResponse {
+  totalCount: number;
+  items: IEvent[];
+}
+
 export interface IQuestionPool{
   id: number;
   blockId: number;
@@ -107,4 +112,12 @@ export interface IAnswer {
   eventId: number;
   score: number;
   timestamp: number;
+}
+
+export interface IAttachment{
+  id: number;
+  name: string;
+  type: string;
+  blob: any;
+  url?: string;
 }

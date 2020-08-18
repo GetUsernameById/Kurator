@@ -13,11 +13,14 @@ import { PlacesSuperTableComponent } from './components/tableComponents/places-s
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AnswersTableComponent } from './components/tableComponents/answers-table/answers-table.component';
 import { ETQuestionsTableComponent } from './components/tableComponents/et-questions-table/et-questions-table.component';
+import { DownloadComponent } from './components/download/download.component';
 
 
 const routes: Routes = [
   { path: '', component: PlacesTableComponent, data : {state: 'stores'}},
-  { path: 'calendar', component: CalendarComponent, data : {state: 'stores'}},
+  { path: 'calendar', component: CalendarComponent, data : {state: 'stores'}, children: [{
+    path: 'download', component: DownloadComponent,
+  }]},
   { path: 'stores', component: PlacesTableComponent, data : {state: 'stores'}},
   { path: 'superstores', component: PlacesSuperTableComponent, data : {state: 'superstores'}},
   { path: 'check-list', component: ChecklistTableComponent, data : {state: 'check-list'}},
@@ -29,6 +32,7 @@ const routes: Routes = [
   { path: 'events', component: EventsTableComponent, data : {state: 'event-types-id'}},
   { path: 'event-types/:id/questions', component: ETQuestionsTableComponent, data : {state: 'check-list-id'}},
   { path: 'questions', component: QuestionsTableComponent, data : {state: 'check-list'}},
+  { path: 'download', component: DownloadComponent, data : {state: 'download'}},
 ];
 
 @NgModule({

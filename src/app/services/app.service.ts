@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IPlaceItem, IDepartment, IEventType, IQuestionPool, IEvent, IQuestionStack, IRank, IPlaceGroup, IAnswer} from '../app.models';
+import { IPlaceItem, IDepartment, IEventType, IQuestionPool, IEvent, IQuestionStack, IRank, IPlaceGroup, IAnswer, IAttachment} from '../app.models';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
+import { NgxGalleryImage } from 'ngx-gallery-9';
 
 
 
@@ -179,7 +181,7 @@ export class AppService {
   }
 
   getQuestionSets(id) {
-    const url = environment.api_url + `question-sets/${id}`;
+    const url = environment.api_url + `questions/question-sets/${id}`;
     return this.http.get(url, this.httpOptions);
   }
 
@@ -279,6 +281,30 @@ export class AppService {
     answer.score = +answer.score;
     const url = environment.api_url + 'answers/edit-by-event/';
     return this.http.post(url, answer, {withCredentials: false});
+  }
+
+  getAttachment(): Observable<any> {
+    const url = environment.api_url + `attachments`;
+    return this.http.get(url, this.httpOptions).pipe(
+      map((attachments: IAttachment[]) => {
+        const imageGallery: NgxGalleryImage[] = [];
+        attachments.forEach((attachment: IAttachment ) => {
+          imageGallery.push({
+            small: `data:${attachment.type};base64,${attachment.blob}`,
+            medium: `data:${attachment.type};base64,${attachment.blob}`,
+            big: `data:${attachment.type};base64,${attachment.blob}`,
+          });
+        });
+        return imageGallery;
+      }),
+    );
+  }
+
+  postFile(fileToUpload: File): Observable<any> {
+    const url = environment.api_url + `attachments/add`;
+    const formData: FormData = new FormData();
+    formData.append('image', fileToUpload, fileToUpload.name);
+    return this.http.post(url, formData, {withCredentials: false});
   }
 
 }

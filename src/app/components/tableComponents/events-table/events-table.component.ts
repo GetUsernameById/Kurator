@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { IEvent } from 'src/app/app.models';
+import { IEvent, IEventResponse } from 'src/app/app.models';
 import { AppService } from 'src/app/services/app.service';
 import { EventFormComponent } from '../../formComponents/event-form/event-form.component';
 
@@ -23,9 +23,8 @@ export class EventsTableComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-
-      this.appService.getTableEventsAll().subscribe((events: IEvent[]) => {
-        this.data = events;
+      this.appService.getTableEventsAll().subscribe((events: IEventResponse) => {
+        this.data = events.items;
       });
     });
   }

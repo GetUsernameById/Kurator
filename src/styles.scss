@@ -166,3 +166,8 @@ i[hidden]{
 body .fc .fc-scroller-harness{
   overflow: visible;
 }
+
+/*for ngx-gallery*/
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
+}
